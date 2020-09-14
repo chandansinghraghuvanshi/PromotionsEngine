@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PromotionsEngine
 {
@@ -6,7 +7,14 @@ namespace PromotionsEngine
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //string optionSelected = "";
+
+            //do
+            //{
+            //    Console.WriteLine();
+            //} while (optionSelected != "0");
+
+            List<string> skuIds = new List<string>() { "A", "B", "C" };
         }
     }
 }
