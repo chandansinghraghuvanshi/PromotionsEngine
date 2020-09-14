@@ -33,7 +33,7 @@ namespace PromotionsEngine.Utilities
             return skuDictionary;
         }
 
-        public static Cart GetCart(Dictionary<string, int> skuDictionary)
+        public static Cart GetCart(Dictionary<string, int> skuDictionary, Dictionary<string, int> skuPriceDictionary)
         {
             Cart cart = new Cart();
 
@@ -41,6 +41,7 @@ namespace PromotionsEngine.Utilities
             {
                 StockKeepingUnit stockKeepingUnit = new StockKeepingUnit();
                 stockKeepingUnit.ID = keyValuePair.Key;
+                stockKeepingUnit.UnitPrice = skuPriceDictionary[keyValuePair.Key];
                 stockKeepingUnit.Units = keyValuePair.Value;
 
                 cart.StockKeepingUnits.Add(stockKeepingUnit);

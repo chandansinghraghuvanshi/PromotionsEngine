@@ -15,9 +15,8 @@ namespace PromotionsEngine
 
             Dictionary<string, int> skuDictionary = SkuUtilities.CreateSkuDictionary(skuIds);
 
-            Cart cart = SkuUtilities.GetCart(skuDictionary);
-
-
+            Cart cart = SkuUtilities.GetCart(skuDictionary, skuPriceDictionary);
+            cart.CalculateCartAmount();
         }
     }
 }
