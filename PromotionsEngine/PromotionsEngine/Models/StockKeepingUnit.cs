@@ -7,6 +7,7 @@ namespace PromotionsEngine.Models
     class StockKeepingUnit
     {
         private string id;
+        private int unitPrice;
         private int units;
         
         public string ID
@@ -18,6 +19,18 @@ namespace PromotionsEngine.Models
             set
             {
                 id = value;
+            }
+        }
+
+        public int UnitPrice
+        {
+            get
+            {
+                return unitPrice;
+            }
+            set
+            {
+                unitPrice = value;
             }
         }
 

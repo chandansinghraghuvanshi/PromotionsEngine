@@ -19,5 +19,9 @@ namespace PromotionsEngine.Models
                 stockKeepingUnits = value;
             }
         }
+
+        public void CalculateCartAmount()
+        {
+        }
     }
 }
