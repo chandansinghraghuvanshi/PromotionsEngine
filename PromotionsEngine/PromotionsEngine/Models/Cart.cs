@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using PromotionsEngine.Interfaces;
 
 namespace PromotionsEngine.Models
 {
@@ -8,12 +9,17 @@ namespace PromotionsEngine.Models
     {
         private int totalAmount = 0;
         private List<StockKeepingUnit> stockKeepingUnits = new List<StockKeepingUnit>();
+        private IPromotion promotion;
 
         public int TotalAmount
         {
             get
             {
                 return totalAmount;
+            }
+            set
+            {
+                totalAmount = value;
             }
         }
 
@@ -37,6 +43,12 @@ namespace PromotionsEngine.Models
             {
                 totalAmount += (stockKeepingUnit.Units * stockKeepingUnit.UnitPrice);
             }
+        }
+
+        public void ApplyPromotion(IPromotion promotion)
+        {
+            this.promotion = promotion;
+            promotion.ApplyPromotion(this);
         }
     }
 }

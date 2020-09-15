@@ -1,13 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using PromotionsEngine.Interfaces;
 
 namespace PromotionsEngine.Models
 {
-    class Promotion
+    abstract class Promotion : IPromotion
     {
-        private string skuRequired;
-        private int numberOfSkuRequired;
+        protected string skuRequired;
+        protected int numberOfSkuRequired;
+        protected int promotionalPrice;
+        protected string promotionType;
+
+        public string PromotionType
+        {
+            get
+            {
+                return promotionType;
+            }
+            set
+            {
+                promotionType = value;
+            }
+        }
 
         public string SkuRequired
         {
@@ -32,5 +47,19 @@ namespace PromotionsEngine.Models
                 numberOfSkuRequired = value;
             }
         }
+
+        public int PromotionalPrice
+        {
+            get
+            {
+                return promotionalPrice;
+            }
+            set
+            {
+                promotionalPrice = value;
+            }
+        }
+
+        public abstract void ApplyPromotion(Cart cart);
     }
 }
