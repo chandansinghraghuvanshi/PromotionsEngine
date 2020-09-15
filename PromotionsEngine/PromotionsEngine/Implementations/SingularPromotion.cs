@@ -23,27 +23,30 @@ namespace PromotionsEngine.Implementations
         public override void ApplyPromotion(Cart cart)
         {
             int discount = 0;
+            int promotionalPrice = 0;
 
             foreach (StockKeepingUnit sku in cart.StockKeepingUnits)
             {
                 if (sku.ID == this.SkuRequired)
                 {
-                    if (sku.Units > this.NumberOfSkuRequired)
+                    if (sku.Units >= this.NumberOfSkuRequired)
                     {
-                        if (sku.Units % this.numberOfSkuRequired == 0)
-                        {
-                            discount = (sku.Units / this.NumberOfSkuRequired) * promotionalPrice;
-                        }
-                        else
-                        {
-                            discount = ((sku.Units / this.NumberOfSkuRequired) * promotionalPrice) + ((sku.Units % this.NumberOfSkuRequired) * sku.UnitPrice);
-                        }
-                    }
-                    else if (sku.Units == this.NumberOfSkuRequired)
-                    {
-                        discount = this.PromotionalPrice;
-                    }
+                        promotionalPrice = ((sku.Units / this.NumberOfSkuRequired) * base.promotionalPrice);
 
+                        //if (sku.Units % this.numberOfSkuRequired == 0)
+                        //{
+                        //    discount = (sku.Units / this.NumberOfSkuRequired) * promotionalPrice;
+                        //}
+                        //else
+                        //{
+                        //    discount = ((sku.Units / this.NumberOfSkuRequired) * promotionalPrice) + ((sku.Units % this.NumberOfSkuRequired) * sku.UnitPrice);
+                        //}
+                    }
+                    //else if (sku.Units == this.NumberOfSkuRequired)
+                    //{
+                    //    discount = this.PromotionalPrice;
+                    //}
+                    discount = (sku.UnitPrice * sku.Units) - promotionalPrice;
                     cart.TotalAmount -= discount;
                     break;
                 }
